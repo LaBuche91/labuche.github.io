@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="CEA LIST" /><link rel="canonical" href="https://labuche91.github.io/VPSim-docs/UserDocumentation/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>User Documentation - VPSim</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "User Documentation";
+        var mkdocs_page_input_path = "UserDocumentation.md";
+        var mkdocs_page_url = "/VPSim-docs/UserDocumentation/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> VPSim
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../VPSim/">Introduction</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Content</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../content/">Main repository</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../uml/">UML</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">User Documentation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#simplified-representation-of-the-interaction-between-the-release-and-the-binary-of-vpsim">Simplified representation of the interaction between the release and the binary of VPSim</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#release">Release</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#release-global-approach">Release global approach</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#demo-package-contents">Demo Package Contents</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#simulation">Simulation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#models">Models</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#launching-a-simulation">Launching a simulation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#benchmarking">Benchmarking</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ending-a-simulation">Ending a simulation</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ExpertDocumentation/">Developer Documentation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">About</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">VPSim</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Documentation</li>
+      <li class="breadcrumb-item active">User Documentation</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="user-documentation">User Documentation</h1>
+<h2 id="simplified-representation-of-the-interaction-between-the-release-and-the-binary-of-vpsim">Simplified representation of the interaction between the release and the binary of VPSim</h2>
+<div style="display: block; margin-left: auto; margin-right: auto; width: 100%;">
+    <img src="/img/VPSim_Release_Representation.png">
+</div>
+
+<h2 id="release">Release</h2>
+<h3 id="release-global-approach">Release global approach</h3>
+<ul>
+<li><strong>gpp.py</strong><br />
+gpp.py is the first python layer to describe the architecture. It contains a dictionary of pairs attribute:value that will influence the second python layer, which we will talk about after. The goal of gpp.py is to describe a platform simply. This first layer makes VPSim easier to use but also facilitates design space exploration (for example, you can just change the numbers of cores very easily…)  </li>
+<li><strong>armv8_platform.py</strong><br />
+armv8_platform.py is the second python layer. The goal of this file is to complete the description of gpp.py, depending on the attributes and their value. Armv8_platform describe the architecture at more concrete and low-level. It’s a template of the Armv8 architecture.  </li>
+<li><strong>dt.py</strong><br />
+dt.py is a python file that dynamically generate a device tree source/blob(dts/dtb) files that will be given to the kernel. The generation is dynamic because it depends on the characteristics of the platform described in the first two python layers (gpp &amp; armv8_platform .py).   </li>
+<li><strong>VPSim.py</strong><br />
+VPsim.py contains several classes used to generate the XML description of the platform built, considering all the python layers (gpp and armv8_platform). It also contains the location of the dtb file generated for the kernel. Then, the generated XML will be given to the VPSim binary so that it can dynamically instantiate the modules and bind their sockets.</li>
+</ul>
+<h3 id="demo-package-contents">Demo Package Contents</h3>
+<ul>
+<li><strong>bin (/bin):</strong> Contains vpsim binary. After each simulation run, a specific folder is created here with files &amp; results of the simulated architecture.</li>
+<li><strong>lib (/lib):</strong> holds the modified qemu library (<code>./qemu/vpsim-qemu.so</code>)</li>
+<li><strong>GPP (/GPP):</strong> Contains configuration python scripts as well as linux kernel and disk image. Configure and simulate a multi-core ARMv8 system running a minimal operating system.</li>
+<li><strong>Python (/Python):</strong> <ul>
+<li><code>Platforms/armv8_platform.py</code>: gives a versatile, generic ARMv8 System script that generates and configures its components based on a higher-level description. In order to abstract away for the user the whole work of composition.</li>
+<li><code>Libs/dt.py</code>: generates the Device Tree to automate the process of configuring hardware components for the simulated architecture.</li>
+<li><code>Libs/vpsim.py</code>: generates the final <code>xml</code> of the simulated architecture.</li>
+</ul>
+</li>
+<li><strong>SESAM userspace (/SESAM_userspace)</strong>: source code for a user space software tool used to control over the simulator for monitoring purposes and collect statistics following the execution of a specific user application and makes it possible to perform an entire exploration task.</li>
+</ul>
+<h2 id="simulation">Simulation</h2>
+<p>If you have entirely installed VPSim by reading the readme files in the different repositories, you can now launch simulations.</p>
+<h4 id="models">Models</h4>
+<p>In the <strong>Release</strong> you will find a <code>GPP</code> directory. This directory contains a python file descriptor of the model of General Purpose Processors (GPP) that will be used for the simulation.
+This file is called <code>gpp.py</code>. You can modify this file to change the model of the GPP.  For futher information, there is a README file in the <code>GPP</code> directory.</p>
+<h4 id="launching-a-simulation">Launching a simulation</h4>
+<p>To launch a simulation, you juste have to run the <code>gpp.py</code> file:</p>
+<pre><code class="language-bash">python3 gpp.py
+</code></pre>
+<p>Then login as <code>root</code> with no password.
+You will then be able to access the simulated system.</p>
+<h4 id="benchmarking">Benchmarking</h4>
+<p>To benchmark the system, you can use the <code>sesam</code> tool.
+To use it during the simulation, you can type:</p>
+<pre><code class="language-bash">sesam benchmark ./[my_program]
+</code></pre>
+<p>Where <code>[my_program]</code> is the program you want to benchmark.
+This will run the program and give you the results of the benchmark in a .log file located in the <code>/bin/.EPI_GPP_VP[date]--[uniqId]</code> directory of the release.</p>
+<h4 id="ending-a-simulation">Ending a simulation</h4>
+<p>To end the simulation, juste type:</p>
+<pre><code class="language-bash">sesam quit
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../uml/" class="btn btn-neutral float-left" title="UML"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ExpertDocumentation/" class="btn btn-neutral float-right" title="Developer Documentation">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>© Copyright 2024, CEA LIST</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../uml/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ExpertDocumentation/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

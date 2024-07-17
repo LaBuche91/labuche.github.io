@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="CEA LIST" /><link rel="canonical" href="https://labuche91.github.io/VPSim-docs/ExpertDocumentation/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Developer Documentation - VPSim</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Developer Documentation";
+        var mkdocs_page_input_path = "ExpertDocumentation.md";
+        var mkdocs_page_url = "/VPSim-docs/ExpertDocumentation/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> VPSim
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../VPSim/">Introduction</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Content</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../content/">Main repository</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../uml/">UML</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../UserDocumentation/">User Documentation</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Developer Documentation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#why-would-you-need-a-dynamic-instanciation">Why would you need a dynamic instanciation ?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vpsim-approach">VPSim approach</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dynamic-instanciation-of-modules-in-vpsim">Dynamic instanciation of modules in VPSim</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#global-approach">Global approach</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#sesamip-class">SesamIp class</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#dynamiccomponents-class">DynamicComponents class</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#platformbuilder-class">PlatformBuilder class</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dynamic-instanciation-process">Dynamic instanciation process</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#steps-to-add-a-new-systemc-module-into-vpsim">Steps to add a new systemC module into VPSim</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#concrete-exemple-of-the-make-and-finalize-functions-a-noc-memory-controller">Concrete exemple of the make and finalize functions : a NoC memory controller</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">About</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">VPSim</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Documentation</li>
+      <li class="breadcrumb-item active">Developer Documentation</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="developerexpert-documentation">Developer/Expert Documentation</h1>
+<p>Please refer to the <a href="https://github.com/CEA-LIST/vpsim-systemc">systemC repository</a> for this part of the documentation.
+We will focus on an added value of VPSim, which is the dynamic instantiation of systemC modules to enable the exploration of different architectures.</p>
+<h2 id="why-would-you-need-a-dynamic-instanciation">Why would you need a dynamic instanciation ?</h2>
+<p>Actually, if you want to build a full system using systemC you will have to instantiate your modules statically. This can be a problem if you want to do automatic exploration of architectures because you will have to recompose your system and recompile your code on each minor/major modification.<br />
+There is several benefits to use a dynamic instantiation:<br />
+1) <strong>Parametrization and Configurability:</strong><br />
+Dynamic instantiation allows you to parametrize your modules dynamically, making them more configurable. This is useful for example, when you want to create multiple instances of the same module with a different configuration.<br />
+2) <strong>Reusability:</strong><br />
+You can create generic modules that can be instantiated multiple times with different parameters making it easier to reuse components in different parts of your design simulated.<br />
+3) <strong>Flexible System Composition:</strong><br />
+Dynamic instantiation provides the flexibility to compose your system by adding or removing modules based on the specific requirements of the simulation.</p>
+<h2 id="vpsim-approach">VPSim approach</h2>
+<p>In VPSim, we use a dynamic instantiation of the different systemC modules that will compose your system. We also automatically bind those modules between them by using a specific process that we will explain in the dynamic instantiation process part. This approach allows you to have only one executable file for all the architectures you want to explore without having to recompile the entire model each time.</p>
+<h2 id="dynamic-instanciation-of-modules-in-vpsim">Dynamic instanciation of modules in VPSim</h2>
+<p>For this part, we advise you to look at the <a href="../uml/">UML diagram</a> of the dynamic instanciation process.</p>
+<p>1) <strong>SesamIp class</strong>:<br />
+SesamIp is an abstract class that is here to define all the properties and functions/methods that an IP would need to be integrated in VPSim (number of in/out ports, stats of the module, required/optional attributes, port binding…). It contains a static attribute called RegisteredClasses, which represents all the known classes of components (systemC modules) that VPSim can dynamically instantiate for a system build.<br />
+2) <strong>DynamicComponents</strong>:<br />
+DynamicComponents is a file where you define a structure for each systemC modules you would like to instantiate dynamically in VPSim. Each structure in this file inherits from SesamIp class and contains a member, which is a pointer to a systemC module. This allow you to define specific rules and behaviours for each SystemC modules you want to include in VPSim by overloading the virtual methods declared in SesamIp class. Each structure need to be registered in the RegisteredClasses static attribute to dynamically be instantiated in VPSim.<br />
+3) <strong>PlatformBuilder</strong>:<br />
+PlatformBuilder is structure used to construct a platform (collection of SesamIp instances). The goal of PlatformBuilder is to instantiate all the IPs described in the XML, bind their ports (the in/out ports of each modules are identified with a Port Alias or automatically binded), and then finalize the module (if you need to consider other systemC modules in your implementation). In short, it builds the platform, binds the ports of each modules and finalizes the modules.  </p>
+<p><strong>The order of instantiation does not count in VPSim</strong>. All the modules are instantiated and then binded automatically or with port aliases specified in the XML. When all the modules are instantiated and binded, there is the finalization phase (if a module needs to consider another module to work has expected).  </p>
+<h3 id="global-approach">Global approach</h3>
+<h4 id="sesamip-class">SesamIp class</h4>
+<p>SesamIp is an abstract class that is here to define all the properties and functions/methods that an IP would need to be integrated in VPSim (number of in/out ports, stats of the module, required/optional attributes, port binding…). It contains a static attribute called RegisteredClasses, which represents all the known classes of components (systemC modules) that VPSim can dynamically instantiate for a system build.</p>
+<h4 id="dynamiccomponents-class">DynamicComponents class</h4>
+<p>DynamicComponents is a file where you define a structure for each systemC modules you would like to instantiate dynamically in VPSim. Each structure in this file inherits from SesamIp class and contains a member, which is a pointer to a systemC module. This allow you to define specific rules and behaviours for each SystemC modules you want to include in VPSim by overloading the virtual methods declared in SesamIp class. Each structure need to be registered in the RegisteredClasses static attribute to dynamically be instantiated in VPSim.</p>
+<h4 id="platformbuilder-class">PlatformBuilder class</h4>
+<p>PlatformBuilder is structure used to construct a platform (collection of SesamIp instances). The goal of PlatformBuilder is to instantiate all the IPs described in the XML, bind their ports (the in/out ports of each modules are identified with a Port Alias or automatically binded), and then finalize the module (if you need to consider other systemC modules in your implementation). In short, it builds the platform, binds the ports of each modules and finalizes the modules.</p>
+<h3 id="dynamic-instanciation-process">Dynamic instanciation process</h3>
+<p>Here is a simple representation of the dynamic instanciation process in VPSim:</p>
+<div style="display: block; margin-left: auto; margin-right: auto; width: 100%;">
+<img src="/img/DynamicInstanciation.png" alt="Dynamic instanciation process" width="100%"/>
+</div>
+
+<h3 id="steps-to-add-a-new-systemc-module-into-vpsim">Steps to add a new systemC module into VPSim</h3>
+<p>1)  <strong>Include your systemC module into the dynamicComponent file so that you can reference it in a structure.</strong><br />
+2)  <strong>Define the DynamicModuleName structure related to your systemC module :</strong><br />
+- Define the required/optional attributes of the module in the constructor<br />
+- Create a pointer to the actual SystemC module has a member of your structure 
+- Overload the virtual functions of the sesamIp class. You have to overload at least the make function (Make() to instantiate the module and create a pointer to the actual systeC module) and the finalize function if you need to do something with the module in relation with other instances ONCE ALL THE OTHER MODULES ARE INSTANCIATED.<br />
+3)  <strong>Register the structure you have just defined by calling registerClass<DynamicModuleName>(“NameForXMLInterpretation”) in the main.</strong> This will allow you to use it in the XML with the name “NameForXMLInterpretation”.<br />
+Then the dynamic instantiation will be handled by platformBuilder (following the XML description of the platform).</p>
+<h3 id="concrete-exemple-of-the-make-and-finalize-functions-a-noc-memory-controller">Concrete exemple of the make and finalize functions : a NoC memory controller</h3>
+<p>Let’s say you want to add a NoC memory controller into VPSim. You will have to create a new structure into DynamicComponents.hpp called “DynamicNocMemoryController” that inherits from SesamIp class.<br />
+<strong>Constructor:</strong><br />
+For the constructor of this structure you will have to give a name as a parameter to the constructor to create a unique SesamIp object (since it inherits from sesamIp). In this constructor, you will define at least the required attributes of a NoC memory controller by calling registerRequiredAttribute from the sesamIp class. These are the required attributes for NoC memory controller:<br />
+-   <strong><em>Size</em></strong> represents the size that the NoC memory controller will handle<br />
+-   <strong><em>Base_address</em></strong> represents the base address on which the NoC memory controller starts<br />
+-   <strong><em>Noc</em></strong> represents the name of the NoC on which the memory controller will be assigned<br />
+-   <strong><em>x_id</em></strong> represents the abscissa position on the NoC where the memory controller will be assigned<br />
+-   <strong><em>y_id</em></strong> represents the ordinate position on the NoC where the memory controller will be assigned<br />
+<strong>make function:</strong><br />
+In VPSim a memory controller isn’t really a systemC module. It is a structure that defines for a NoC on which position is assigned a memory component. In this case, you only override the make function to check if the required attributes are all specified in the XML by calling the checkAttribute function from SesamIp class.<br />
+<strong>finalize function:</strong><br />
+Has said, finalize is called only when all the modules that compose your platform are instantiated (so the make function has already been called on each modules). The difference between the two functions is that in finalize, you can consider other IP instances (has all the modules are instantiated). In this case, we first create a pointer to the NoC instance you want to assign the NoC memory controller. Then, since you have a pointer to the actual instance of the NoC module, we defined a function in our NoC module called register_mem_ctrl that indicates to the NoC that at the position x_id, y_id are the memory addresses base_address+size. Therefore, you simply call this function on the NoC module pointer by giving as parameters the attributes of the NoC memory controller.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../UserDocumentation/" class="btn btn-neutral float-left" title="User Documentation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../contributing/" class="btn btn-neutral float-right" title="Contributing">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>© Copyright 2024, CEA LIST</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../UserDocumentation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../contributing/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
