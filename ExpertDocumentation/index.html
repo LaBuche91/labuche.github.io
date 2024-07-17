@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="CEA LIST" /><link rel="canonical" href="https://labuche91.github.io/labuche.github.io/ExpertDocumentation/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="CEA LIST" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
     <title>Developer Documentation - VPSim</title>
     <link rel="stylesheet" href="../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "Developer Documentation";
         var mkdocs_page_input_path = "ExpertDocumentation.md";
-        var mkdocs_page_url = "/labuche.github.io/ExpertDocumentation/";
+        var mkdocs_page_url = null;
       </script>
     
     <!--[if lt IE 9]>
@@ -144,11 +144,8 @@ PlatformBuilder is structure used to construct a platform (collection of SesamIp
 <h4 id="platformbuilder-class">PlatformBuilder class</h4>
 <p>PlatformBuilder is structure used to construct a platform (collection of SesamIp instances). The goal of PlatformBuilder is to instantiate all the IPs described in the XML, bind their ports (the in/out ports of each modules are identified with a Port Alias or automatically binded), and then finalize the module (if you need to consider other systemC modules in your implementation). In short, it builds the platform, binds the ports of each modules and finalizes the modules.</p>
 <h3 id="dynamic-instanciation-process">Dynamic instanciation process</h3>
-<p>Here is a simple representation of the dynamic instanciation process in VPSim:</p>
-<div style="display: block; margin-left: auto; margin-right: auto; width: 100%;">
-<img src="img/DynamicInstanciation.png" alt="Dynamic instanciation process" width="100%"/>
-</div>
-
+<p>Here is a simple representation of the dynamic instanciation process in VPSim:
+<img alt="VPSim-UML-Build" src="../img/DynamicInstanciation.png" /></p>
 <h3 id="steps-to-add-a-new-systemc-module-into-vpsim">Steps to add a new systemC module into VPSim</h3>
 <p>1)  <strong>Include your systemC module into the dynamicComponent file so that you can reference it in a structure.</strong><br />
 2)  <strong>Define the DynamicModuleName structure related to your systemC module :</strong><br />
